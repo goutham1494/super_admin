@@ -1,0 +1,108 @@
+<div class="main-container">
+  <h2 class="page-heads">Vendors</h2>
+  <div class="width-control">
+    <div class="left">
+      <!-- filters -->
+      <div class="filters-div">
+        <h6>Vendor</h6>
+        <select name="" id="vendor-filter">
+          <option value="">All Vendors</option>
+          <option value="">Commercial Vendors</option>
+          <option value="">Non - Commercial Vendors</option>
+          <option value="">Paid</option>
+          <option value="">UnPaid</option>
+        </select>
+        <h6>Category</h6>
+        <select name="" id="category-filter" (change)='catSelected($event.target.value)'>
+          <option value="" default disabled>All Categories</option>
+          <option value="{{ cat._id }}" *ngFor='let cat of cats'>{{ cat.name }}</option>
+        </select>
+        <h6>Sub Category</h6>
+        <select name="" id="sub-cat-filter" (change)='subCatSelected($event.target.value)'>
+          <option value="{{ sub._id }}" *ngFor='let sub of p_subs'>{{ sub.name }}</option>
+        </select>
+      </div>
+    </div>
+    <div class="right">
+      <div class="v-top">
+        <input type="text" [(ngModel)]="filter">
+        <button>SEARCH</button>
+
+        <!-- Here I have used ng2Filter npm -->
+      </div>
+      <div class="vendors-core" >
+        <table class="table table-striped">
+          <tr>
+            <th>
+              Vendor name
+            </th>
+            <th>
+              Email
+            </th>
+            <th>
+              Moblie number
+            </th>
+            <th>
+              Gender
+            </th>
+            <th>
+              Action
+            </th>
+          </tr>
+
+          <tr *ngFor='let v of display_vendors | filter:filter'>
+            <td [routerLink]="['/vendor', v._id]" class="links">
+              {{ v.name }}
+            </td>
+            <td>
+              {{ v.email }}
+            </td>
+            <td>
+              {{ v.mobile }}
+            </td>
+            <td>
+              {{ v.gender }}
+            </td>
+            <td>
+              <i class="fas fa-cog" data-toggle="modal" data-target="#myModal"></i>
+            </td>
+            <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button> -->
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <!-- <h4 class="modal-title">Modal Header</h4> -->
+      </div>
+      <div class="modal-body">
+        <button type="button" class="btn btn-success mybutton">Suspend</button>
+        <button type="button" class="btn btn-danger mybutton">Block</button>
+        <button type="button" class="btn btn-warning mybutton">Hide</button>
+
+
+        <div style="margin-top: 10px">
+          <label>Noify</label>
+          <select>
+            <option>App and website notifications</option>
+            <option>SMS</option>
+            <option>Email</option>
+          </select>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>

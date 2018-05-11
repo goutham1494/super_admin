@@ -1,0 +1,25 @@
+{
+  "name": "reatchall_super_admin",
+  "version": "1.0.0",
+  "description": "Reatchall Super Admin Application",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Asteriisc/r_super_admin.git"
+  },
+  "author": "Asteriisc Technologies",
+  "license": "ISC",
+  "dependencies": {
+    "@angular/core": "^5.2.10",
+    "body-parser": "^1.18.2",
+    "compression": "^1.7.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.3"
+  },
+  "devDependencies": {
+    "@angular/cli": "^1.7.4"
+  }
+}
